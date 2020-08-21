@@ -6,7 +6,10 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 
 
-mongoose.connect("mongodb://localhost:27017/auction", { useNewUrlParser: true }, function(err){
+mongoose.connect("mongodb://localhost:27017/auction",{
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+}, function(err){
     if(err) return console.log(err);
     // app.listen(3000, function(){
     //     console.log("Сервер ожидает подключения...");
