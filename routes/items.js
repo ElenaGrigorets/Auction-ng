@@ -23,25 +23,26 @@ router.get("/", function(req, res){
   });
 });
 
-// app.get("/api/users/:id", function(req, res){
-//
-//   const id = req.params.id;
-//   User.findOne({_id: id}, function(err, user){
-//
-//     if(err) return console.log(err);
-//     res.send(user);
-//   });
-// });
-//
+router.get("/:id", function(req, res){
+
+  const id = req.params.id;
+  Item.findOne({_id: id}, function(err, item){
+
+    if(err) return console.log(err);
+    res.send(item);
+  });
+});
+
 router.post("/create", function (req, res) {
 
   if(!req.body) return res.sendStatus(400);
 
+  const id = req.body._id;
   const name = req.body.name;
   const description = req.body.description;
   const price = req.body.price;
   const users = req.body.users;
-  const item = new Item({name: name, description: description, price: price, users:users});
+  const item = new Item({id: id, name: name, description: description, price: price, users:users});
 console.log(req.body);
   item.save(function(err){
     if(err) return console.log(err);

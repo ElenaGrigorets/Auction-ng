@@ -13,4 +13,8 @@ export class ItemService {
   getAllItems(): Observable<Array<IItem>> {
     return this.http.get<Array<IItem>>('http://localhost:3000/items');
   }
+
+  findItemById(itemId: string): Observable<IItem> {
+    return this.http.get<IItem>('http://localhost:3000/items/' + itemId);
+  }
 }

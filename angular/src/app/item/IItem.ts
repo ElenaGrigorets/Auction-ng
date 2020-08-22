@@ -1,5 +1,5 @@
 export class IItem {
-    id: number;
+    _id: String;
     name: string;
     description: string;
     price: number;

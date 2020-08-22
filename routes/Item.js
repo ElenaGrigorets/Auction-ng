@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 var User = require('./User');
 
 var ItemSchema = new Schema({
+    id: String,
     name : String,
     description : String,
     price : Number,
