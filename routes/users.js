@@ -1,6 +1,6 @@
-var User = require('./User');
-var express = require('express');
-var router = express.Router();
+const User = require('./User');
+const express = require('express');
+const router = express.Router();
 
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
