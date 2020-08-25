@@ -11,8 +11,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class ItemDetailsComponent implements OnInit {
   item: IItem;
   constructor(private itemService: ItemService,
-              private route: ActivatedRoute,
-              private router: Router) { }
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     const itemId = this.route.snapshot.paramMap.get('id');
