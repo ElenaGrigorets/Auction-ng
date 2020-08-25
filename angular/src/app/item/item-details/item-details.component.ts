@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {IItem} from "../IItem";
-import {ItemService} from "../item.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {IItem} from '../IItem';
+import {ItemService} from '../item.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-item-details',
@@ -15,7 +15,7 @@ export class ItemDetailsComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-    const itemId = this.route.snapshot.paramMap.get("id");
+    const itemId = this.route.snapshot.paramMap.get('id');
     this.itemService.findItemById(itemId).subscribe(item => {
       this.item = item;
     });

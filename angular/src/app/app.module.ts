@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { ItemComponent } from './item/item.component';
 import { ItemDetailsComponent } from './item/item-details/item-details.component';
-import {AppRoutingModule} from "./app-routing.module";
+import {AppRoutingModule} from './app-routing.module';
 
 @NgModule({
   declarations: [
