@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found.component';
+import { ItemModule } from "./items/item.module";
 
 @NgModule({
   declarations: [
@@ -14,8 +15,9 @@ import { PageNotFoundComponent } from './page-not-found.component';
   imports: [
     BrowserModule,
     HttpClientModule,
+    ItemModule,
     // need to be the last one:
-    AppRoutingModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
