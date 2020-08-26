@@ -17,9 +17,10 @@ const jsonParser = express.json();
 router.get("/", function(req, res){
 
   Item.find({}, function(err, items){
-
     if(err) return console.log(err);
-    res.send(items)
+    let returnedItems = [];
+    items.forEach(item => returnedItems.push(item.transform()));
+    res.send(returnedItems)
   });
 });
 
@@ -29,7 +30,7 @@ router.get("/:id", function(req, res){
   Item.findOne({_id: id}, function(err, item){
 
     if(err) return console.log(err);
-    res.send(item);
+    res.send(item.transform());
   });
 });
 
@@ -37,7 +38,7 @@ router.post("/create", function (req, res) {
 
   if(!req.body) return res.sendStatus(400);
 
-  const id = req.body._id;
+  const id = req.body.id;
   const name = req.body.name;
   const description = req.body.description;
   const price = req.body.price;
@@ -46,7 +47,7 @@ router.post("/create", function (req, res) {
 console.log(req.body);
   item.save(function(err){
     if(err) return console.log(err);
-    res.send(item);
+    res.send(item.transform());
   });
 });
 //

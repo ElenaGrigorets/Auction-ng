@@ -3,8 +3,7 @@ var Schema = mongoose.Schema;
 
 var User = require('./User');
 
-var ItemSchema = new Schema({
-    id: String,
+const ItemSchema = new Schema({
     name : String,
     description : String,
     price : Number,
@@ -13,5 +12,15 @@ var ItemSchema = new Schema({
         ref: "User"
     }]
 }, {versionKey: false});
+
+ItemSchema.method('transform', function() {
+  let obj = this.toObject();
+
+  //Rename fields
+  obj.id = obj._id;
+  delete obj._id;
+
+  return obj;
+});
 
 module.exports = mongoose.model('Item', ItemSchema);

@@ -5,7 +5,11 @@
       <div *ngFor="let item of items">
         <ul>
           <li>
-            <a [routerLink]="['/item-details', item._id]">{{item.name}}</a>
+            <a [routerLink]="['/items', item.id]">{{item.name}}</a>
+            <button class="btn btn-outline-primary btn-sm"
+                    [routerLink]="['/items', item.id, 'edit']">
+              Edit
+            </button>
           </li>
         </ul>
       </div>
@@ -16,6 +20,11 @@
 <!--        <app-side-bar></app-side-bar>-->
 <!--        <app-subreddit-side-bar></app-subreddit-side-bar>-->
 <!--      </div>-->
+
+<!--      <a class="nav-link"-->
+<!--         [routerLink]="['/items', 0, 'edit']"-->
+<!--         routerLinkActive="active">Add Item</a>-->
+      <a [routerLink]="['/items', 0, 'edit']">Add Item</a>
     </div>
   </div>
 </div>
