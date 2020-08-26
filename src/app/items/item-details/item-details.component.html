@@ -1,1 +1,24 @@
-<p>details for item - {{item.name}}</p>
+<div class="container">
+  <img [src]=" " [alt]="item?.name" class="event-image">
+
+  <div class="row">
+    <div class="col-md-11">
+      <h2>{{item?.name | uppercase}} </h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div><strong>Date:</strong> </div>
+      <div><strong>Time:</strong> </div>
+      <div><strong>Price:</strong> {{item?.price | currency:'USD'}}</div>
+    </div>
+    <div class="col-md-6">
+      <article>
+        <strong>Description:</strong><br />
+      </article>
+    </div>
+  </div>
+
+  <hr>
+</div>

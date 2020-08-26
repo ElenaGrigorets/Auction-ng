@@ -11,6 +11,8 @@ import { ActivatedRoute } from "@angular/router";
 export class ItemListComponent implements OnInit {
 
   items: Array<IItem> = [];
+  sortBy: string;
+  filterBy: string;
 
   constructor(private itemService: ItemService,
               private route: ActivatedRoute) { }

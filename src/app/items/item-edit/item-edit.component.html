@@ -1,32 +1,35 @@
+<div class="card">
+  <div class="card-header">
+    {{pageTitle}}
+  </div>
+
 <div class="card-body">
   <form novalidate
         #itemForm="ngForm">
-    <fieldset>
-      <legend>Basic Product Information</legend>
 
       <div class="form-group row">
         <label class="col-md-2 col-form-label"
-               for="productNameId">Product Name</label>
+               for="itemNameId">Item Name</label>
         <div class="col-md-8">
           <input class="form-control"
-                 id="productNameId"
+                 id="itemNameId"
                  type="text"
                  placeholder="Name (required)"
-                 required
-                 minlength="3"
-                 [(ngModel)]=item.name
-                 name="itemName"/>
+                 required/>
+
+<!--                 [(ngModel)]=item.name-->
+
                  <!--#itemNameVar="ngModel"-->
-                 <!--[ngClass]="{'is-invalid': (productNameVar.touched ||-->
-                 <!--                           productNameVar.dirty ||-->
-                 <!--                           product.id !== 0) &&-->
-                 <!--                           !productNameVar.valid }" -->
+                 <!--[ngClass]="{'is-invalid': (itemNameVar.touched ||-->
+                 <!--                           itemNameVar.dirty ||-->
+                 <!--                           item.id !== 0) &&-->
+                 <!--                           !itemNameVar.valid }" -->
 <!--          <span class="invalid-feedback">-->
-<!--            <span *ngIf="productNameVar.errors?.required">-->
-<!--              Product name is required.-->
+<!--            <span *ngIf="itemNameVar.errors?.required">-->
+<!--              Name is required.-->
 <!--            </span>-->
-<!--            <span *ngIf="productNameVar.errors?.minlength">-->
-<!--              Product name must be at least three characters.-->
+<!--            <span *ngIf="itemNameVar.errors?.minlength">-->
+<!--              Name must be at least three characters.-->
 <!--            </span>-->
 <!--          </span>-->
         </div>
@@ -34,44 +37,72 @@
 
       <div class="form-group row">
         <label class="col-md-2 col-form-label"
-               for="productCodeId">Product Code</label>
+               for="itemPriceId">Price</label>
         <div class="col-md-8">
           <input class="form-control"
-                 id="productCodeId"
+                 id="itemPriceId"
                  type="text"
-                 placeholder="Code (required)"
-                 required
-                 [(ngModel)]=item.description
-                 name="productCode"
-                 #itemDescVar="ngModel"/>
-<!--                 [ngClass]="{'is-invalid': (productCodeVar.touched ||-->
-<!--                                            productCodeVar.dirty ||-->
-<!--                                            product.id !== 0) &&-->
-<!--                                            !productCodeVar.valid }" -->
+                 placeholder="Price (required)"
+                 required/>
+<!--                 [(ngModel)]=item.price-->
+<!--                 name="itemPrice"-->
+<!--                 #itemPriceVar="ngModel"/>-->
+<!--                 [ngClass]="{'is-invalid': (itemPriceVar.touched ||-->
+<!--                                            itemPriceVar.dirty ||-->
+<!--                                            item.id !== 0) &&-->
+<!--                                            !itemPriceVar.valid }" -->
 <!--          <span class="invalid-feedback">-->
-<!--            <span *ngIf="productCodeVar.errors?.required">-->
-<!--              Product code is required.-->
+<!--            <span *ngIf="itemPriceVar.errors?.required">-->
+<!--              Price is required.-->
 <!--            </span>-->
 <!--          </span>-->
         </div>
       </div>
 
-<!--      <div class="form-group row">-->
-<!--        <label class="col-md-2 col-form-label"-->
-<!--               for="descriptionId">Description</label>-->
-<!--        <div class="col-md-8">-->
-<!--          <textarea class="form-control"-->
-<!--                    id="descriptionId"-->
-<!--                    placeholder="Description"-->
-<!--                    rows=3-->
-<!--                    [(ngModel)]=product.description-->
-<!--                    name="description"></textarea>-->
-<!--        </div>-->
-<!--      </div>-->
-    </fieldset>
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label"
+               for="descriptionId">Description</label>
+        <div class="col-md-8">
+          <textarea class="form-control"
+                    id="descriptionId"
+                    placeholder="Description"
+                    rows=3
+                    name="description">
+          </textarea>
+        </div>
+      </div>
+
+    <div class="row mb-2">
+      <div class="col-md-4">
+        <button class="btn btn-primary mr-3"
+                style="width:80px"
+                type="button"
+                [title]="isValid() ? 'Save your entered data' : 'Disabled until the form data is valid'"
+                [disabled]="!isValid()"
+                (click)="saveItem()">
+          Save
+        </button>
+        <button class="btn btn-outline-secondary mr-3"
+                style="width:80px"
+                type="button"
+                title="Cancel your edits"
+                [routerLink]="['/items']">
+          Cancel
+        </button>
+        <button class="btn btn-outline-warning"
+                style="width:80px"
+                type="button"
+                title="Delete this product"
+                (click)="deleteItem()">
+          Delete
+        </button>
+      </div>
+    </div>
+
   </form>
 </div>
 
 <div class='alert alert-danger'
      *ngIf='errorMessage'>{{errorMessage}}
+</div>
 </div>

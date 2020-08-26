@@ -1,30 +1,15 @@
-<div class="reddit-body">
-  <div class="container">
-    <div class="row">
-      <hr />
-      <div *ngFor="let item of items">
-        <ul>
-          <li>
-            <a [routerLink]="['/items', item.id]">{{item.name}}</a>
-            <button class="btn btn-outline-primary btn-sm"
-                    [routerLink]="['/items', item.id, 'edit']">
-              Edit
-            </button>
-          </li>
-        </ul>
-      </div>
-<!--      <div class="col-md-9">-->
-<!--        <app-post-tile [items]="items"></app-post-tile>-->
-<!--      </div>-->
-<!--      <div class="col-md-3">-->
-<!--        <app-side-bar></app-side-bar>-->
-<!--        <app-subreddit-side-bar></app-subreddit-side-bar>-->
-<!--      </div>-->
-
-<!--      <a class="nav-link"-->
-<!--         [routerLink]="['/items', 0, 'edit']"-->
-<!--         routerLinkActive="active">Add Item</a>-->
-      <a [routerLink]="['/items', 0, 'edit']">Add Item</a>
+<div class="row" style="margin-bottom: 10px;">
+  <div *ngFor="let item of items" class='col-md-6'>
+    <div class='well hoverwell thumbnail'>
+      <img [src]=" " [alt]="item?.name" class="event-image">
+      <h2 [routerLink]="['/items', item.id]">{{item?.name | uppercase}}</h2>
+      <button class="btn btn-outline-primary btn-sm"
+              [routerLink]="['/items', item.id, 'edit']">Edit
+      </button>
+      <div>Date: some-date</div>
+      <div>Time: some-time</div>
+      <div>Price: {{item?.price | currency:'USD'}}</div>
     </div>
   </div>
 </div>
+

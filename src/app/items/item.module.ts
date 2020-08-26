@@ -20,7 +20,7 @@ import { ItemEditComponent } from "./item-edit/item-edit.component";
     CommonModule,
     FormsModule,
     RouterModule.forChild([
-      { path: '', component: ItemListComponent },
+      { path: 'items', component: ItemListComponent },
       { path: 'items/:id', component: ItemDetailsComponent },
       { path: 'items/:id/edit', component: ItemEditComponent }
     ])
