@@ -15,10 +15,11 @@
                  id="itemNameId"
                  type="text"
                  placeholder="Name (required)"
-                 required/>
+                 name="itemName"
+                 required
 
-<!--                 [(ngModel)]=item.name-->
-
+                 [(ngModel)]=item.name
+          />
                  <!--#itemNameVar="ngModel"-->
                  <!--[ngClass]="{'is-invalid': (itemNameVar.touched ||-->
                  <!--                           itemNameVar.dirty ||-->
@@ -43,9 +44,9 @@
                  id="itemPriceId"
                  type="text"
                  placeholder="Price (required)"
-                 required/>
-<!--                 [(ngModel)]=item.price-->
-<!--                 name="itemPrice"-->
+                 required
+                 [(ngModel)]=item.price
+                 name="itemPrice" />
 <!--                 #itemPriceVar="ngModel"/>-->
 <!--                 [ngClass]="{'is-invalid': (itemPriceVar.touched ||-->
 <!--                                            itemPriceVar.dirty ||-->

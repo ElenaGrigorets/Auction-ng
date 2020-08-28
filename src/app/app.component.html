@@ -6,7 +6,7 @@
           <h1>Auction</h1>
         </a>
     </div>
-
+     <button [routerLink]="['/items' , 0, 'edit']">Add Item</button>
       <ul class="nav navbar-nav">
         <li>
           <a class='nav-link' routerLinkActive='active' [routerLink]="['/items']">Items List</a>
@@ -33,11 +33,12 @@
         </div>
         <form id="searchForm" (ngSubmit)='searchItems(searchTerm)' class="navbar-form navbar-right"  >
           <div class="form-group">
+            <label>Search</label>
             <input [(ngModel)]='searchTerm' name='searchTerm' type="text" class="form-control" placeholder="Search item" >
           </div>
-          <button class="btn btn-default">
-            Search
-          </button>
+<!--          <button class="btn btn-default">-->
+<!--            Search-->
+<!--          </button>-->
         </form>
     </div>
   </div>

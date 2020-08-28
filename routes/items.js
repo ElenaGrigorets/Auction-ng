@@ -30,7 +30,10 @@ router.get("/:id", function(req, res){
   Item.findOne({_id: id}, function(err, item){
 
     if(err) return console.log(err);
-    res.send(item.transform());
+    if (item !== null) {
+      res.send(item.transform());
+    }
+
   });
 });
 
@@ -50,6 +53,16 @@ console.log(req.body);
     res.send(item.transform());
   });
 });
+
+router.delete("/:id/delete", function (req, res) {
+
+  const id = req.params.id;
+  Item.deleteOne({_id: id}, function(err){
+
+    if(err) return console.log(err);
+    res.sendStatus(200);
+  });
+});
 //
 // app.delete("/api/users/:id", function(req, res){
 //
@@ -61,18 +74,15 @@ console.log(req.body);
 //   });
 // });
 //
-// app.put("/api/users", jsonParser, function(req, res){
-//
-//   if(!req.body) return res.sendStatus(400);
-//   const id = req.body.id;
-//   const userName = req.body.name;
-//   const userAge = req.body.age;
-//   const newUser = {age: userAge, name: userName};
-//
-//   User.findOneAndUpdate({_id: id}, newUser, {new: true}, function(err, user){
-//     if(err) return console.log(err);
-//     res.send(user);
-//   });
-// });
+router.put("/update", function(req, res){
+
+  if(!req.body) return res.sendStatus(400);
+  const item = req.body;
+  console.log(req.body);
+  Item.findOneAndUpdate({_id: item.id}, item, function(err){
+    if(err) return console.log(err);
+    res.sendStatus(200);
+  });
+});
 
 module.exports = router;

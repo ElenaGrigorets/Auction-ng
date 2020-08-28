@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { IItem } from "../IItem";
@@ -23,27 +23,32 @@ export class ItemEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.data.forEach((data) => {
-      this.item = data['item'];
+    let id = this.route.snapshot.paramMap.get("id");
+    if (id === '0') {
+      this.item = new IItem();
+      this.item.id = '0';
+    }
+    this.itemService.findItemById(id).subscribe
+    (item => {
+      this.item = item;
+      console.log(item);
     });
   }
 
-  deleteItem(): void {
-
+  deleteItem() {
+    this.itemService.deleteItem(this.item.id).subscribe();
+    this.onSaveComplete("Deleted");
   }
 
   saveItem(): void {
     if (this.isValid()) {
+      console.log('dddd' + this.item);
       if (this.item.id === '0') {
-        this.itemService.createItem(this.item).subscribe({
-          error: err => this.errorMessage = err,
-          next: () => this.onSaveComplete(`The new` + this.item.name + `was saved`)
-        });
+        this.itemService.createItem(this.item).subscribe();
+        this.onSaveComplete("Created");
       } else {
-        this.itemService.updateItem(this.item).subscribe({
-          error: err => this.errorMessage = err,
-          next: () => this.onSaveComplete(`The updated` + this.item.name + `was saved`)
-        });
+        this.itemService.updateItem(this.item).subscribe();
+        this.onSaveComplete("Updated")
       }
     } else {
       this.errorMessage = 'Please correct the validation errors.';
@@ -58,6 +63,6 @@ export class ItemEditComponent implements OnInit {
   }
 
   isValid() {
-    return false;
+    return true;
   }
 }
