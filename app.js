@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const cors = require('cors')
+const passport = require('passport');
 
 
 mongoose.connect("mongodb://localhost:27017/auction",{
@@ -36,5 +37,10 @@ app.use(cors());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/items', itemsRouter);
+
+app.use(passport.initialize());
+app.use(passport.session());
+// Add the line below, which you're missing:
+require('./routes/passport')(passport);
 
 module.exports = app;

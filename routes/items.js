@@ -24,6 +24,12 @@ router.get("/", function(req, res){
   });
 });
 
+
+router.get("/testItems", function(req, res){
+  console.log("test Items");
+  res.sendStatus(200);
+});
+
 router.get("/:id", function(req, res){
 
   const id = req.params.id;

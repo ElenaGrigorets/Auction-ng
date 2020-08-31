@@ -4,7 +4,7 @@
       <img [src]=" " [alt]="item?.name" class="event-image">
       <h2 [routerLink]="['/items', item.id]">{{item?.name | uppercase}}</h2>
       <button class="btn btn-outline-primary btn-sm"
-              [routerLink]="['/items', item.id, 'edit']">Edit
+              [routerLink]="['/items', item.id, 'edit']">Item Details
       </button>
       <div>Date: some-date</div>
       <div>Time: some-time</div>

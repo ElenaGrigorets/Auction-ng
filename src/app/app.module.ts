@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found.component';
 import { ItemModule } from "./items/item.module";
 import { ModalComponent } from "./shared/modal/modal.component";
+import {UserModule} from "./users/user.module";
 
 
 
@@ -21,6 +22,7 @@ import { ModalComponent } from "./shared/modal/modal.component";
     BrowserModule,
     HttpClientModule,
     ItemModule,
+    UserModule,
     FormsModule,
     // need to be the last one:
     AppRoutingModule
