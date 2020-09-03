@@ -1,52 +1,59 @@
-<div class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-        <a class="navbar-brand" routerLinkActive='active'
-           [routerLink]="['/']">
-          <h1>Auction</h1>
-          <hr/>
-        </a>
-    </div>
-      <ul class="nav navbar-nav">
-        <li><a class='nav-link' [routerLink]="['/items']" routerLinkActive='active'>Items List</a></li>
-        <li><a class='nav-link' [routerLink]="['/items' , 0, 'edit']" routerLinkActive='active'>Add Item</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Sort by
-            <span class="caret"></span>
-          </a>
-            <ul class="dropdown-menu">
-              <li>default</li>
-              <li>ascending</li>
-              <li>descending</li>
-            </ul>
-          </li>
-        <li><a class='nav-link'>Filter</a></li>
-        </ul>
-        <div class="navbar-header navbar-right">
-          <ul class="nav navbar-nav">
-            <li>
-              <a [routerLink]="['/user/login']">Login</a>
-            </li>
-          </ul>
-        </div>
-        <form id="searchForm" (ngSubmit)='searchItems(searchTerm)' class="navbar-form navbar-right"  >
-          <div class="form-group">
-            <label>Search</label>
-            <input [(ngModel)]='searchTerm' name='searchTerm' type="text" class="form-control" placeholder="Search item" >
-          </div>
-<!--          <button class="btn btn-default">-->
-<!--            Search-->
-<!--          </button>-->
-        </form>
-    </div>
+<div class="jumbotron" style="margin-bottom: 0px;">
+  <h1>Auction</h1>
+</div>
+<div class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+  <!--  <div class="container-fluid">-->
+  <!--    <div class="navbar-header">-->
+  <!--        <a class="navbar-brand" routerLinkActive='active'-->
+  <!--           [routerLink]="['/']">-->
+  <!--          <h1>Auction</h1>-->
+  <!--          <hr/>-->
+  <!--        </a>-->
+  <!--    </div>-->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class='nav-link' [routerLink]="['/items']" routerLinkActive='active'>Items List</a>
+    </li>
+    <li class="nav-item">
+      <a class='nav-link' [routerLink]="['/items' , 0, 'edit']" routerLinkActive='active'>Add Item</a>
+    </li>
+    <li class="nav-item dropdown">
+      <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+        Sort by
+      </a>
+      <ul class="dropdown-menu">
+        <a class="dropdown-item">default</a>
+        <a class="dropdown-item">ascending</a>
+        <a class="dropdown-item">descending</a>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a class='nav-link'>Filter</a>
+    </li>
+  </ul>
+  <div class="navbar-header navbar-right">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class='nav-link' [routerLink]="['/user/login']">Login</a>
+      </li>
+    </ul>
   </div>
-
-
-  <modal closeOnBodyClick='true' elementId="searchResults" title="Matching Sessions">
-    <div class="list-group">
-      <a class="list-group-item" *ngFor='let item of foundItems'
-         [routerLink]="['/items' , item.id]">{{item.name}}</a>
+  <form id="searchForm" (ngSubmit)='searchItems(searchTerm)' class="navbar-form navbar-right"  >
+    <div class="form-group">
+      <label>Search</label>
+      <input [(ngModel)]='searchTerm' name='searchTerm' type="text" class="form-control" placeholder="Search item" >
     </div>
-  </modal>
+    <!--          <button class="btn btn-default">-->
+    <!--            Search-->
+    <!--          </button>-->
+  </form>
+</div>
+
+
+<modal closeOnBodyClick='true' elementId="searchResults" title="Matching Sessions">
+  <div class="list-group">
+    <a class="list-group-item" *ngFor='let item of foundItems'
+       [routerLink]="['/items' , item.id]">{{item.name}}</a>
+  </div>
+</modal>
 <router-outlet></router-outlet>

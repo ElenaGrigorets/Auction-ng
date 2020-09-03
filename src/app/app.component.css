@@ -1,12 +1,1 @@
-.nav-link {
-  font-size: large;
-  cursor: pointer;
-}
 
-.navbar-light .navbar-nav .nav-link.active {
-  color: #007ACC
-}
-.nav.navbar-nav {font-size: 15px;}
-#searchForm { margin-right: 100px;}
-@media(max-width: 1200px) { #searchForm {display: none;}}
-li > a.active { color: #F97924;}
